@@ -1,4 +1,4 @@
-package board;
+package board.config;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
-@ComponentScan(excludeFilters = @Filter(value = Configuration.class, type = FilterType.ANNOTATION))
+@ComponentScan(basePackages = "board", excludeFilters = @Filter(value = Configuration.class, type = FilterType.ANNOTATION))
 @EnableAutoConfiguration
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExConfiguration {

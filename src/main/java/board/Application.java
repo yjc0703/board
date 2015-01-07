@@ -2,6 +2,9 @@ package board;
 
 import org.springframework.boot.SpringApplication;
 
+import board.config.AppConfig;
+import board.config.DevConfig;
+
 public class Application {
 
 	public static void main(String[] args) {
