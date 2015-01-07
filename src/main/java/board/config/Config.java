@@ -12,6 +12,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import board.annotation.ExMapper;
+
 
 @MapperScan(basePackages = "board.dao", annotationClass = ExMapper.class)
 

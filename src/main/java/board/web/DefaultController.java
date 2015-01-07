@@ -24,7 +24,7 @@ public class DefaultController implements ErrorController {
 	}
 	
 	@RequestMapping(value = { "/", "/index" })
-	public String AA() {
+	public String index() {
 		return "index";
 	}
 }

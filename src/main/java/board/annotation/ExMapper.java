@@ -1,4 +1,4 @@
-package board.config;
+package board.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

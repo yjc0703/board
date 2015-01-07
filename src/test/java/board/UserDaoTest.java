@@ -14,31 +14,39 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import board.config.TestConfig;
-import board.dao.AdminDao;
-import board.domain.Admin;
+import board.dao.UserDao;
+import board.vo.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = TestConfig.class)
 @WebAppConfiguration
-public class DaoTest {
+public class UserDaoTest {
 	
 	@Autowired
-	AdminDao dao;
+	UserDao dao;
 
 	@Test
 	public void test() throws Exception {
-		List<Admin> adminList = dao.selectAdmin();
-		assertThat(adminList.size(), is(1));
+		
+		List<Map<String, String>> mapList = dao.selectAllUserMap();
+		assertThat(mapList.size(), is(1));
+		
+		User a = new User();
+		a.setUserId("admin2");
+		a.setPassword("admin2");
+		a.setUserName("관리자2");
+		
+		Integer i = dao.insertUser(a);
+		assertThat(i, is(1));
 		
 		
-		Admin a = new Admin();
-		a.setId(2);
-		Integer i = dao.insertAdmin(a);
-		System.out.println(i);
+		List<User> userList = dao.selectAllUser();
+		assertThat(userList.size(), is(2));
 		
-		List<Map<String, String>> mapList = dao.selectAdminMap();
-		assertThat(mapList.size(), is(2));
+		int seq = 0;
 		
-		
+		for(User u : userList) {
+			assertThat(u.getSeq(), is(++seq));
+		}
 	}
 }

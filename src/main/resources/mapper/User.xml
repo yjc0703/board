@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" > 
+<mapper namespace="board.dao.UserDao"> 
+	<select id="selectAllUser" resultType="board.vo.User">
+		select * from user
+	</select>
+
+	<select id="selectAllUserMap" resultType="java.util.Map">
+		select * from user
+	</select>
+		
+	<insert id="insertUser">
+		insert into user(user_id, password, user_name) values(#{user.userId}, #{user.password}, #{user.userName})
+	</insert>
+</mapper>

@@ -1,1 +1,1 @@
-insert into admin values(1);
+insert into user(user_id, password, user_name) values('admin', 'admin', '관리자');
