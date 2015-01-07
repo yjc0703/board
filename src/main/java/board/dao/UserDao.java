@@ -9,7 +9,7 @@ import board.annotation.ExMapper;
 import board.vo.User;
 
 @ExMapper
-public interface UserDao {
+public interface UserDao extends BaseDao<User, Integer> {
 	List<User> selectAllUser();
 	List<Map<String, String>> selectAllUserMap();
 	Integer insertUser(@Param("user") User user);

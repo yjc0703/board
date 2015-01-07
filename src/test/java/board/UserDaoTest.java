@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import board.config.TestConfig;
 import board.dao.UserDao;
+import board.dao.UserDaoImpl;
 import board.vo.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,6 +26,16 @@ public class UserDaoTest {
 	
 	@Autowired
 	UserDao dao;
+	
+	@Autowired
+	UserDaoImpl d;
+	
+	@Test
+	public void tt() {
+		User u = dao.findBySeq(1);
+		assertThat(u.getSeq(), is(1));
+		
+	}
 
 	@Test
 	public void test() throws Exception {
