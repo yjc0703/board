@@ -4,8 +4,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
+import com.google.common.base.CaseFormat;
+
+@SuppressWarnings("serial")
 public class ObjectMapper extends HashMap<String, Object> {
-	public <T extends Mapping> T map(Class<T> clazz) {
+	public <T> T map(Class<T> clazz) {
 
 		T t = null;
 		
@@ -15,7 +18,7 @@ public class ObjectMapper extends HashMap<String, Object> {
 			for(Method m : clazz.getMethods()) {
 				if(m.getName().startsWith("set")) {
 					
-					String k = m.getName().replace("set", "").toUpperCase();
+					String k = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, m.getName().replace("set", ""));;
 					m.invoke(t, this.get(k));
 				}
 			}
